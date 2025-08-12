@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=80"]
+
+[project]
+name = "pyth-poker-bot"
+dynamic = [ "version" ]
+dependencies = [
+    "eth-ape",
+    "httpx",
+    "silverback",
+]
+
+[[tool.ape.plugins]]
+name = "aws"
+[[tool.ape.plugins]]
+name = "turnkey"
+version = "0.8.0a0"
+
+[[tool.ape.plugins]]
+name = "base"
+[[tool.ape.plugins]]
+name = "optimism"
