@@ -101,5 +101,7 @@ async def check_and_update_pricefeeds(time: datetime):
         encoded_updates,
         sender=bot.signer,
         required_confirmations=0,
-        value=pyth.getUpdateFee(encoded_updates),
+        # NOTE: Method is deprecated, however Ape doesn't encode overloaded args correctly
+        #       see: https://github.com/ApeWorX/ape/issues/2670
+        value=pyth.getUpdateFee(len(encoded_updates)),
     )
