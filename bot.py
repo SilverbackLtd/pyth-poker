@@ -47,6 +47,9 @@ async def setup_caches(_):
     bot.state.last_update = dict()
     bot.state.last_price = dict()
     for feed_id, price_struct in zip(bot.state.pricefeeds, call()):
+        if not price_struct:
+            raise RuntimeError(f"Feed unavailable: '{bot.state.pricefeeds[feed_id]}'")
+
         bot.state.last_update[feed_id] = datetime.fromtimestamp(
             price_struct.publishTime, tz=UTC
         )
